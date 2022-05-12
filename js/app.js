@@ -1,27 +1,30 @@
-(function () {
-  const buttons = document.querySelectorAll(".counterBtn");
-  let count = 0;
+const nextBtn = document.querySelector(".nextBtn");
+const prevBtn = document.querySelector(".prevBtn");
+const counter = document.querySelector("#counter");
 
-  //Add event listeners and functionailty to each button
-  buttons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      if (button.classList.contains("prevBtn")) {
-        count--;
-      } else if (button.classList.contains("nextBtn")) {
-        count++;
-      }
+nextBtn.addEventListener("click", (e) => {
+  console.log("me diste click");
+  aumentar();
+});
 
-      //Select the counter text
-      const counter = document.querySelector("#counter");
-      counter.textContent = count;
+prevBtn.addEventListener("click", (e) => {
+  disminuir();
+});
 
-      if (count < 0) {
-        counter.style.color = "red";
-      } else if (count > 0) {
-        counter.style.color = "green";
-      } else {
-        counter.style.color = "#333333";
-      }
-    });
-  });
-})();
+function aumentar() {
+  counter.textContent++;
+  if (counter.textContent > 0) {
+    counter.style.color = "green";
+  } else {
+    counter.style.color = "gray";
+  }
+}
+
+function disminuir() {
+  counter.textContent--;
+  if (counter.textContent < 0) {
+    counter.style.color = "red";
+  }else {
+    counter.style.color = "gray";
+  }
+}
